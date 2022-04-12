@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
+import { Container, InputGroup, FormControl, Button } from 'react-bootstrap';
+
 import Post from "./components/Post";
+import Nevbar from "./Nevbar";
 
 function Main() {
   // const [message, setMessage] = useState([]);
@@ -28,8 +31,15 @@ function Main() {
   console.log(posts)
 
   return (
-    <div className="App">
-        
+    <Container>
+      <Nevbar />
+      <InputGroup className="mb-3">
+        <FormControl
+          placeholder="내용을 입력하세요."
+          as="textarea" aria-label="With textarea"
+        />
+        <Button>등록</Button>
+      </InputGroup>
         {loading ? <h1>Loading...</h1>: 
       <div>
         {posts.map(post => 
@@ -40,7 +50,7 @@ function Main() {
             contents={post.contents}/>
         )}
       </div>}
-    </div>
+    </Container>
     
   );
 }

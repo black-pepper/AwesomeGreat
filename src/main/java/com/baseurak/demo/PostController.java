@@ -11,15 +11,21 @@ import java.util.Map;
 @RestController
 public class PostController {
 
+    public Map<String, String> addPost(String id, String userid, String datetime, String contents) {
+        Map<String, String> post = new HashMap<>();
+        post.put("id", id);
+        post.put("userid", userid);
+        post.put("datetime", datetime);
+        post.put("contents", contents);
+        return post;
+    }
+
     @GetMapping("posts")
     public List<Map> Post() {
         List<Map> posts = new ArrayList<>();
-        Map<String, String> post1 = new HashMap<>();
-        post1.put("id", "0");
-        post1.put("userid","00");
-        post1.put("datetime", "2022-01-26");
-        post1.put("contents", "오늘 아침에 일찍 일어났어용");
-        posts.add(post1);
+        posts.add(addPost("0", "00", "2022-01-26", "오늘 아침에 일찍 일어났어용"));
+        posts.add(addPost("1", "01", "2022-01-26", "운동하고 돌아왔습니다"));
+        posts.add(addPost("2", "00", "2022-01-26", "오늘 공부 끝!!!"));
         return posts;
     }
 }
