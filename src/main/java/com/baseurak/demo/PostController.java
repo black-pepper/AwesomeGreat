@@ -1,5 +1,7 @@
 package com.baseurak.demo;
 
+import com.baseurak.demo.post.Post;
+import com.baseurak.demo.post.PostService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,21 +13,14 @@ import java.util.Map;
 @RestController
 public class PostController {
 
-    public Map<String, String> addPost(String id, String userid, String datetime, String contents) {
-        Map<String, String> post = new HashMap<>();
-        post.put("id", id);
-        post.put("userid", userid);
-        post.put("datetime", datetime);
-        post.put("contents", contents);
-        return post;
-    }
+    AppConfig appConfig = new AppConfig();
+    PostService postService = appConfig.postService();
 
     @GetMapping("posts")
-    public List<Map> Post() {
-        List<Map> posts = new ArrayList<>();
-        posts.add(addPost("0", "00", "2022-01-26", "오늘 아침에 일찍 일어났어용"));
-        posts.add(addPost("1", "01", "2022-01-26", "운동하고 돌아왔습니다"));
-        posts.add(addPost("2", "00", "2022-01-26", "오늘 공부 끝!!!"));
-        return posts;
+    public List<Post> Post() {
+        postService.write(new Post(0L, "00", "2022-01-26", "오늘 아침에 일찍 일어났어용"));
+        postService.write(new Post(1L, "01", "2022-01-26", "운동하고 돌아왔습니다"));
+        postService.write(new Post(2L, "00", "2022-01-26", "오늘 공부 끝!!!"));
+        return postService.read(0L, 2L);
     }
 }
