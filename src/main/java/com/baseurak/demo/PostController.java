@@ -2,6 +2,8 @@ package com.baseurak.demo;
 
 import com.baseurak.demo.post.Post;
 import com.baseurak.demo.post.PostService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +15,11 @@ import java.util.Map;
 @RestController
 public class PostController {
 
-    AppConfig appConfig = new AppConfig();
-    PostService postService = appConfig.postService();
+    // AppConfig appConfig = new AppConfig();
+    // PostService postService = appConfig.postService();
+
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    PostService postService = ac.getBean("postService", PostService.class);
 
     @GetMapping("posts")
     public List<Post> Post() {

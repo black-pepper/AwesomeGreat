@@ -4,6 +4,8 @@ import com.baseurak.demo.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -14,8 +16,10 @@ class PostServiceTest {
     PostService postService;
     @BeforeEach
     public void beforeEach(){
-        AppConfig appConfig = new AppConfig();
-        postService = appConfig.postService();
+        //AppConfig appConfig = new AppConfig();
+        //postService = appConfig.postService();
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        postService = ac.getBean("postService", PostService.class);
     }
 
     @Test
@@ -29,6 +33,7 @@ class PostServiceTest {
 
         //then
         Assertions.assertThat(post).isEqualTo(readPost.get(0));
+        Assertions.assertThat(post).isEqualTo(postService.read(0L));
     }
 
     @Test

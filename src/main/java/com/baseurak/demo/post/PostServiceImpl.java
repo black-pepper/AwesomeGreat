@@ -21,6 +21,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public Post read(Long postId) {
+        return postRepository.read(postId);
+    }
+
+    @Override
     public void modify(Post post) {
         postRepository.update(post);
     }

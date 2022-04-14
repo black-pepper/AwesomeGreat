@@ -24,6 +24,11 @@ public class MemoryPostRepository implements PostRepository {
     }
 
     @Override
+    public Post read(Long postId){
+        return store.get(postId);
+    }
+
+    @Override
     public void update(Post post) {
         store.put(post.getId(), post);
     }

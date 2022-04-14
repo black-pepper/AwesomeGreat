@@ -5,7 +5,8 @@ import java.util.Map;
 
 public interface PostService {
     void write(Post post);
-    List<Post> read(Long PostId1, Long PostId2);
+    List<Post> read(Long postId1, Long postId2);
+    Post read(Long postId);
     void modify(Post post);
     void delete(Long postId);
 }
