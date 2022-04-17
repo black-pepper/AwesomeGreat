@@ -4,9 +4,13 @@ import com.baseurak.demo.post.Post;
 import com.baseurak.demo.post.PostService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,11 +25,24 @@ public class PostController {
     ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
     PostService postService = ac.getBean("postService", PostService.class);
 
-    @GetMapping("posts")
+    public Long lastId = 2L;
+    public String redirect = "<meta http-equiv=\"refresh\" content=\"0;url=/main\">";
+
+    @GetMapping("/post")
     public List<Post> Post() {
-        postService.write(new Post(0L, "00", "2022-01-26", "오늘 아침에 일찍 일어났어용"));
-        postService.write(new Post(1L, "01", "2022-01-26", "운동하고 돌아왔습니다"));
-        postService.write(new Post(2L, "00", "2022-01-26", "오늘 공부 끝!!!"));
-        return postService.read(0L, 2L);
+        return postService.read(0L, lastId);
+    }
+
+    @PostMapping("/post")
+    public String writePost(Post post) {
+        post.setId(++lastId);
+        postService.write(post);
+        return redirect;
+    }
+
+    @DeleteMapping("/post/{id}")
+    public String DeletePost(@PathVariable("id") Long postId) {
+        postService.delete(postId);
+        return "redirect:/";
     }
 }

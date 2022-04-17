@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import { Container, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Container, InputGroup, Form, FormControl, Button } from 'react-bootstrap';
 
 import Post from "./components/Post";
 import Nevbar from "./Nevbar";
@@ -19,7 +19,7 @@ function Main() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async() => {
-    const response = await fetch("/posts");
+    const response = await fetch("/post");
     const json = await response.json();
     setPosts(json);
     setLoading(false);
@@ -28,24 +28,25 @@ function Main() {
     getPosts();
   }, []);
 
-  console.log(posts)
-
   return (
     <Container>
       <Nevbar />
-      <InputGroup className="mb-3">
-        <FormControl
-          placeholder="내용을 입력하세요."
-          as="textarea" aria-label="With textarea"
-        />
-        <Button>등록</Button>
-      </InputGroup>
+      <Form action="/post" method="post">
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="내용을 입력하세요."
+            as="textarea" aria-label="With textarea"
+            name="contents"
+          />
+          <Button type="submit">등록</Button>
+        </InputGroup>
+      </Form>
         {loading ? <h1>Loading...</h1>: 
       <div>
         {posts.map(post => 
           <Post
             id={post.id}
-            userId={post.userid}
+            userId={post.userId}
             datetime={post.datetime}
             contents={post.contents}/>
         )}

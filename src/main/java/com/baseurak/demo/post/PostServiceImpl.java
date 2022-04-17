@@ -1,5 +1,7 @@
 package com.baseurak.demo.post;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class PostServiceImpl implements PostService {
@@ -12,6 +14,9 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void write(Post post) {
+        LocalDate now = LocalDate.now();
+        post.setDatetime(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        post.setUserId("00");
         postRepository.create(post);
     }
 
