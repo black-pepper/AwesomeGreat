@@ -31,7 +31,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void modify(Post post) {
+    public void modify(Long postId, String contents) {
+        Post post = postRepository.read(postId);
+        post.setContents(contents);
         postRepository.update(post);
     }
 

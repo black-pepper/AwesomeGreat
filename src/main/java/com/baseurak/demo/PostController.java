@@ -28,21 +28,32 @@ public class PostController {
     public Long lastId = 2L;
     public String redirect = "<meta http-equiv=\"refresh\" content=\"0;url=/main\">";
 
-    @GetMapping("/post")
-    public List<Post> Post() {
+    @GetMapping("/post") //메인 페이지 글 읽기
+    public List<Post> readPosts() {
         return postService.read(0L, lastId);
     }
 
-    @PostMapping("/post")
+    @GetMapping("/post/{id}") //세부 페이지 글 읽기
+    public Post readOnePost(@PathVariable("id") Long postId){
+        return postService.read(postId);
+    }
+
+    @PostMapping("/post") //새 게시글 작성
     public String writePost(Post post) {
         post.setId(++lastId);
         postService.write(post);
         return redirect;
     }
 
-    @DeleteMapping("/post/{id}")
-    public String DeletePost(@PathVariable("id") Long postId) {
+    @DeleteMapping("/post/{id}") //게시글 삭제
+    public String deletePost(@PathVariable("id") Long postId) {
         postService.delete(postId);
         return "redirect:/";
+    }
+
+    @PostMapping("/post/{id}") //게시글 수정
+    public String modifyPost(Post post) {
+        postService.modify(post.getId(), post.getContents());
+        return redirect;
     }
 }

@@ -8,17 +8,15 @@ import {
 } from "react-router-dom";
 import Main from "./routes/Main";
 import Detail from './routes/Detail';
+import Modify from './routes/Modify';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/main">
-          <Main />
-        </Route>
-        <Route path="/detail/:id">
-          <Detail/>
-        </Route>
+        <Route path="/main" component={Main}/>
+        <Route path="/detail/:id" component={Detail}/>
+        <Route path="/modify/:id" component={Modify}/>
       </Switch>
     </Router>
   );

@@ -4,7 +4,7 @@ function Nevbar() {
   return(
     <Navbar bg="light" expand="lg">
     <Container fluid>
-        <Navbar.Brand href="#">굉장해! 엄청나!</Navbar.Brand>
+        <Navbar.Brand href="/main">굉장해! 엄청나!</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
         <Nav

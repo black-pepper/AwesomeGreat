@@ -12,15 +12,11 @@ function Post({id, userId, datetime, contents}) {
 
   return (
     <Card
-      //onClick={()=>window.location.href=`/detail/${id}`}
+      onClick={()=>window.location.href=`/detail/${id}`}
       >
       <Card.Body>
-        <div>{userId} {datetime} {
-          (userId==="00")?
-            <div> <Button id={id} variant="light" size="sm" href={`/detail/${id}`}>수정</Button> 
-             <Button id={id} variant="light" size="sm" onClick={deletePost}>삭제</Button></div>:""
-        }</div>
-        <div>{contents}</div>
+        <Card.Subtitle className="mb-2 text-muted">{userId} {datetime}</Card.Subtitle>
+        <Card.Text>{contents}</Card.Text>
       </Card.Body>
     </Card>
   );
