@@ -1,4 +1,4 @@
-package com.baseurak.demo.member;
+package com.baseurak.AwesomeGreat.member;
 
 public interface MemberService {
     void join(Member member);

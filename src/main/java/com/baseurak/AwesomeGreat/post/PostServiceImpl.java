@@ -1,4 +1,4 @@
-package com.baseurak.demo.post;
+package com.baseurak.AwesomeGreat.post;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,6 +1,6 @@
-package com.baseurak.demo.member;
+package com.baseurak.AwesomeGreat.member;
 
-import com.baseurak.demo.AppConfig;
+import com.baseurak.AwesomeGreat.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

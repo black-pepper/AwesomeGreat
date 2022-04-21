@@ -1,20 +1,12 @@
-package com.baseurak.demo;
+package com.baseurak.AwesomeGreat;
 
-import com.baseurak.demo.post.Post;
-import com.baseurak.demo.post.PostService;
+import com.baseurak.AwesomeGreat.post.Post;
+import com.baseurak.AwesomeGreat.post.PostService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class PostController {

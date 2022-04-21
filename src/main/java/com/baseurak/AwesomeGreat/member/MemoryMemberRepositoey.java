@@ -1,4 +1,4 @@
-package com.baseurak.demo.member;
+package com.baseurak.AwesomeGreat.member;
 
 import java.util.HashMap;
 import java.util.Map;

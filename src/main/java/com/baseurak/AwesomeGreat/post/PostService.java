@@ -1,7 +1,6 @@
-package com.baseurak.demo.post;
+package com.baseurak.AwesomeGreat.post;
 
 import java.util.List;
-import java.util.Map;
 
 public interface PostService {
     void write(Post post);

@@ -1,4 +1,4 @@
-package com.baseurak.demo.post;
+package com.baseurak.AwesomeGreat.post;
 
 public class Post {
     private Long id;

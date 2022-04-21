@@ -1,4 +1,4 @@
-package com.baseurak.demo.member;
+package com.baseurak.AwesomeGreat.member;
 
 public class MemberServiceImpl implements MemberService{
     private final MemberRepository memberRepository;
