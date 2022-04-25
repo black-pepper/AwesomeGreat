@@ -3,7 +3,7 @@ package com.baseurak.AwesomeGreat;
 import com.baseurak.AwesomeGreat.member.MemberRepository;
 import com.baseurak.AwesomeGreat.member.MemberService;
 import com.baseurak.AwesomeGreat.member.MemberServiceImpl;
-import com.baseurak.AwesomeGreat.member.MemoryMemberRepositoey;
+import com.baseurak.AwesomeGreat.member.MemoryMemberRepository;
 import com.baseurak.AwesomeGreat.post.MemoryPostRepository;
 import com.baseurak.AwesomeGreat.post.PostRepository;
 import com.baseurak.AwesomeGreat.post.PostService;
@@ -21,7 +21,7 @@ public class AppConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepositoey();
+        return new MemoryMemberRepository();
     }
 
     @Bean

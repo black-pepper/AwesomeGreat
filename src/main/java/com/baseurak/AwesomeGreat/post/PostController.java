@@ -1,5 +1,6 @@
-package com.baseurak.AwesomeGreat;
+package com.baseurak.AwesomeGreat.post;
 
+import com.baseurak.AwesomeGreat.AppConfig;
 import com.baseurak.AwesomeGreat.post.Post;
 import com.baseurak.AwesomeGreat.post.PostService;
 import org.springframework.context.ApplicationContext;
