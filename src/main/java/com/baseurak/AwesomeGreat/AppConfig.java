@@ -1,5 +1,6 @@
 package com.baseurak.AwesomeGreat;
 
+import com.baseurak.AwesomeGreat.login.LoginService;
 import com.baseurak.AwesomeGreat.member.MemberRepository;
 import com.baseurak.AwesomeGreat.member.MemberService;
 import com.baseurak.AwesomeGreat.member.MemberServiceImpl;
@@ -33,5 +34,8 @@ public class AppConfig {
     public PostRepository postRepository() {
         return new MemoryPostRepository();
     }
+
+    @Bean
+    public LoginService loginService() { return new LoginService(memberRepository()); }
 
 }

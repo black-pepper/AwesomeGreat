@@ -21,8 +21,11 @@ public class LoginController {
         return "<meta http-equiv=\"refresh\" content=\"0;url=" + route + "\">";
     }
 
-    //@GetMapping("/login")
-    //public String loginForm(LoginForm form){ return "login/loginForm"; }
+    @GetMapping("/login")
+    public String loginForm(LoginForm form){
+        System.out.println(form.getLoginId());
+        return "login/loginForm";
+    }
 
     @PostMapping("/login")
     public String login(LoginForm form, BindingResult bindingResult, HttpServletRequest request) {
