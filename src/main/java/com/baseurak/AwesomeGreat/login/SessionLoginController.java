@@ -1,23 +1,29 @@
 package com.baseurak.AwesomeGreat.login;
 
-import com.baseurak.AwesomeGreat.user.User;
+import com.baseurak.AwesomeGreat.SessionConst;
+import com.baseurak.AwesomeGreat.member.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Slf4j
-@RestController
+//@Controller
 @RequiredArgsConstructor
-public class LoginController {
-    private final LoginService loginService;
+public class SessionLoginController {
+    private final SessionLoginService loginService;
     private String redirect(String route){
         return "<meta http-equiv=\"refresh\" content=\"0;url=" + route + "\">";
+    }
+
+    @GetMapping("/login")
+    public String loginForm(LoginForm form){
+        System.out.println(form.getLoginId());
+        return "login/loginForm";
     }
 
     @PostMapping("/login")
@@ -26,15 +32,15 @@ public class LoginController {
             return redirect("/login");
         }
 
-        User loginUser = loginService.login(form.getLoginId(), form.getPassword());
-        if (loginUser == null) {
+        Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
+        if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return redirect("/login");
         }
 
-        //HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         //세션 관리자를 통해 세션 생성하고 회원 데이터 보관
-        //session.setAttribute(SessionConst.LOGIN_MEMBER, loginUser);
+        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
         return redirect("/main");
     }
@@ -47,5 +53,4 @@ public class LoginController {
         }
         return redirect("/main");
     }
-
 }

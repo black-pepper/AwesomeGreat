@@ -1,6 +1,6 @@
 package com.baseurak.AwesomeGreat;
 
-import com.baseurak.AwesomeGreat.login.LoginService;
+import com.baseurak.AwesomeGreat.login.SessionLoginService;
 import com.baseurak.AwesomeGreat.member.MemberRepository;
 import com.baseurak.AwesomeGreat.member.MemberService;
 import com.baseurak.AwesomeGreat.member.MemberServiceImpl;
@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    /*
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
@@ -24,6 +25,7 @@ public class AppConfig {
     public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
+    */
 
     @Bean
     public PostService postService() {
@@ -34,8 +36,5 @@ public class AppConfig {
     public PostRepository postRepository() {
         return new MemoryPostRepository();
     }
-
-    @Bean
-    public LoginService loginService() { return new LoginService(memberRepository()); }
 
 }

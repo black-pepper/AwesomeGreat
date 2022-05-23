@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+//@RestController
 public class MemberController {
     ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
     MemberRepository memberRepository = ac.getBean("memberRepository", MemberRepository.class);

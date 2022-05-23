@@ -26,15 +26,15 @@ public class LoginController {
             return redirect("/login");
         }
 
-        User loginUser = loginService.login(form.getLoginId(), form.getPassword());
-        if (loginUser == null) {
+        User loginMember = loginService.login(form.getLoginId(), form.getPassword());
+        if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return redirect("/login");
         }
 
         //HttpSession session = request.getSession();
         //세션 관리자를 통해 세션 생성하고 회원 데이터 보관
-        //session.setAttribute(SessionConst.LOGIN_MEMBER, loginUser);
+        //session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
 
         return redirect("/main");
     }
