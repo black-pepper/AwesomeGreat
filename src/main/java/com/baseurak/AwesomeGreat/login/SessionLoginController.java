@@ -1,9 +1,10 @@
 package com.baseurak.AwesomeGreat.login;
 
 import com.baseurak.AwesomeGreat.SessionConst;
-import com.baseurak.AwesomeGreat.member.Member;
+import com.baseurak.AwesomeGreat.user.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +29,16 @@ public class SessionLoginController {
 
     @PostMapping("/login")
     public String login(LoginForm form, BindingResult bindingResult, HttpServletRequest request) {
+        //System.out.println("form.getLoginId() = " + form.getLoginId());
+        //log.info("LOGIN ID: {} PASSWORD: {}", form.getLoginId(), form.getPassword());
+
         if (bindingResult.hasErrors()) {
             return redirect("/login");
         }
 
-        Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
+        User loginMember = loginService.login(form.getLoginId(), form.getPassword());
+
+
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return redirect("/login");

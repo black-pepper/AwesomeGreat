@@ -1,17 +1,17 @@
 package com.baseurak.AwesomeGreat.login;
 
-import com.baseurak.AwesomeGreat.member.Member;
-import com.baseurak.AwesomeGreat.member.MemberRepository;
 import com.baseurak.AwesomeGreat.post.PostRepository;
+import com.baseurak.AwesomeGreat.user.User;
+import com.baseurak.AwesomeGreat.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 //@Service
 public class SessionLoginService {
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
 
-    public SessionLoginService(MemberRepository memberRepository){ this.memberRepository = memberRepository; }
+    public SessionLoginService(UserRepository memberRepository){ this.userRepository = memberRepository; }
 
-    public Member login(String loginId, String password) {
+    public User login(String loginId, String password) {
         /*
         Optional<Member> findMemberOptional = memberRepository.findByLoginId(loginId);
         Member member = findMemberOptional.get();
@@ -20,8 +20,8 @@ public class SessionLoginService {
         } else {
             return null;
         }*/
-        return memberRepository.findByLoginId(loginId)
-                .filter(m -> m.getPassword().equals(password))
-                .orElse(null);
+        return userRepository.findByUserId(loginId);
+                //.filter(m -> m.getPassword().equals(password))
+                //orElse(null);
     }
 }

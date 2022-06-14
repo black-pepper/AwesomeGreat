@@ -22,6 +22,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(LoginForm form, BindingResult bindingResult, HttpServletRequest request) {
+        log.info("LOGIN ID:{} PASSWORD:{}",form.getLoginId(), form.getPassword());
+
         if (bindingResult.hasErrors()) {
             return redirect("/login");
         }

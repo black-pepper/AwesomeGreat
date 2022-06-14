@@ -3,16 +3,21 @@ package com.baseurak.AwesomeGreat.user;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 //import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 //@Entity
 public class User {
-    //@Id
+    @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String userId;
     private String password;
     private UserRole roll;

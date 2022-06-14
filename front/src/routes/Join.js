@@ -6,7 +6,7 @@ function Join() {
   return (<Container>
     <Nevbar />
     <Card>
-      <Card.Body><form action="/join" method="post">
+      <Card.Body><form action="/user" method="post">
 
         <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
             <Form.Label column sm="2">

@@ -1,6 +1,7 @@
 package com.baseurak.AwesomeGreat.login;
 
 import com.baseurak.AwesomeGreat.user.User;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 @DisplayName("JwtManger 테스트")
 class JwtManagerTest {
     private JwtManager jwtManager;
@@ -28,6 +30,7 @@ class JwtManagerTest {
                         .userId("hong01")
                         .password("1234")
                         .build();
+        log.info("userId = {}", user.getId());
         // when
         // 1) 토큰 생성
         final String token = jwtManager.generateJwtToken(user);

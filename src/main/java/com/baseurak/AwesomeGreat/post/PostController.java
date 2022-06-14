@@ -3,6 +3,7 @@ package com.baseurak.AwesomeGreat.post;
 import com.baseurak.AwesomeGreat.AppConfig;
 import com.baseurak.AwesomeGreat.post.Post;
 import com.baseurak.AwesomeGreat.post.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class PostController {
     // AppConfig appConfig = new AppConfig();
     // PostService postService = appConfig.postService();
 
-    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
-    PostService postService = ac.getBean("postService", PostService.class);
+    @Autowired
+    PostService postService;
 
     public Long lastId = 2L;
     public String redirect = "<meta http-equiv=\"refresh\" content=\"0;url=/main\">";

@@ -1,10 +1,15 @@
 package com.baseurak.AwesomeGreat.post;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//@Repository
 public class MemoryPostRepository implements PostRepository {
 
     private static Map<Long, Post> store = new HashMap<>();

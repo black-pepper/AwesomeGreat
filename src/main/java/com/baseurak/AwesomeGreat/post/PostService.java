@@ -1,5 +1,7 @@
 package com.baseurak.AwesomeGreat.post;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 public interface PostService {

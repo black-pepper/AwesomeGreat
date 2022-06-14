@@ -5,6 +5,7 @@ import com.baseurak.AwesomeGreat.user.UserRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Component
+@Slf4j
 public class JwtManager {
     private final String securityKey = "hello world"; // TODO 민감정보는 따로 분리하는 것이 좋다
     private final Long expiredTime = 1000 * 60L * 60L * 3L;// 유효시간 3시간
@@ -24,6 +26,7 @@ public class JwtManager {
      * @return String JWT 토큰
      */
     public String generateJwtToken(User user) {
+        log.info(user.getUserId());
         Date now = new Date();
         return Jwts.builder()
                 .setSubject(user.getUserId()) // 보통 username
