@@ -29,7 +29,8 @@ public class JpaPostRepository implements PostRepository{
 
     @Override
     public List<Post> read(Long postId1, Long postId2) {
-        String jpql = "select i from Post i where i.Id >= :postId1 and i.Id <= :postId2";
+        String jpql = "select i from Post i";
+        //String jpql = "select i from Post i where i.Id >= :postId1 and i.Id <= :postId2";
         TypedQuery<Post> query = em.createQuery(jpql, Post.class);
         return query.getResultList();
     }
@@ -44,7 +45,7 @@ public class JpaPostRepository implements PostRepository{
     public void update(Post post) {
         Long postId = post.getId();
         Post findPost = em.find(Post.class, postId);
-        findPost.setContents(post.getContents());
+        findPost.setContent(post.getContent());
     }
 
     @Override

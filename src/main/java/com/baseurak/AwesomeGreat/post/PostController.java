@@ -19,12 +19,12 @@ public class PostController {
     @Autowired
     PostService postService;
 
-    public Long lastId = 2L;
+    //public Long lastId = 2L;
     public String redirect = "<meta http-equiv=\"refresh\" content=\"0;url=/main\">";
 
     @GetMapping("/post") //메인 페이지 글 읽기
     public List<Post> readPosts() {
-        return postService.read(0L, lastId);
+        return postService.read(0L, 10L);
     }
 
     @GetMapping("/post/{id}") //세부 페이지 글 읽기
@@ -34,7 +34,6 @@ public class PostController {
 
     @PostMapping("/post") //새 게시글 작성
     public String writePost(Post post) {
-        post.setId(++lastId);
         postService.write(post);
         return redirect;
     }
@@ -47,7 +46,7 @@ public class PostController {
 
     @PostMapping("/post/{id}") //게시글 수정
     public String modifyPost(Post post) {
-        postService.modify(post.getId(), post.getContents());
+        postService.modify(post.getId(), post.getContent());
         return redirect;
     }
 }

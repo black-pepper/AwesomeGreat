@@ -36,7 +36,7 @@ function Main() {
           <FormControl
             placeholder="내용을 입력하세요."
             as="textarea" aria-label="With textarea"
-            name="contents"
+            name="content"
           />
           <Button type="submit">등록</Button>
         </InputGroup>
@@ -47,8 +47,8 @@ function Main() {
           <Post
             id={post.id}
             userId={post.userId}
-            datetime={post.datetime}
-            contents={post.contents}/>
+            uploadDate={post.uploadDate}
+            content={post.content}/>
         )}
       </div>}
     </Container>

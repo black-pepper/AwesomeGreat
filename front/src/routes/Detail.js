@@ -32,12 +32,12 @@ function Detail(prop){
   <Nevbar /> 
   <Card>
     <Card.Body>
-      <Card.Subtitle className="mb-2 text-muted">{post.userId} {post.datetime}</Card.Subtitle>
-      <Card.Text>{post.contents}</Card.Text>
+      <Card.Subtitle className="mb-2 text-muted">{post.userId} {post.uploadDate}</Card.Subtitle>
+      <Card.Text>{post.content}</Card.Text>
     </Card.Body>
   </Card>
   {
-    (post.userId==="00")?
+    (post.userId=="0")?
     <div align="right"> <Button id={post.id} variant="light" size="sm" href={`/modify/${post.id}`}>수정</Button> 
       <Button id={post.id} variant="light" size="sm" onClick={deletePost}>삭제</Button></div>:""
   }

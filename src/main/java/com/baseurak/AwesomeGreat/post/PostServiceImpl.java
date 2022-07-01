@@ -23,8 +23,9 @@ public class PostServiceImpl implements PostService {
     @Override
     public void write(Post post) {
         LocalDate now = LocalDate.now();
-        post.setDatetime(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        post.setUserId("00");
+        post.setUploadDate(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd ")));
+        post.setUserId(0L);
+        post.setReport(0);
         postRepository.create(post);
     }
 
@@ -41,7 +42,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public void modify(Long postId, String contents) {
         Post post = postRepository.read(postId);
-        post.setContents(contents);
+        post.setContent(contents);
         postRepository.update(post);
     }
 

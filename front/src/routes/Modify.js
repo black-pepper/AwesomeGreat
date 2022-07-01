@@ -32,7 +32,7 @@ function Modify(prop){
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>게시글 수정</Form.Label>
                 <Form.Control 
-                    name="contents"
+                    name="content"
                     as="textarea" 
                     rows={3} 
                 />
