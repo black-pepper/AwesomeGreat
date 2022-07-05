@@ -1,4 +1,4 @@
-package com.baseurak.AwesomeGreat.Comment;
+package com.baseurak.AwesomeGreat.comment;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,10 +29,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void modify(Long commentId, String contents) {
-        Comment findComment = commentRepository.readOne(commentId);
-        findComment.setContent(contents);
-        commentRepository.update(findComment);
+    public void modify(Long commentId, String content) {
+        commentRepository.update(commentId, content);
     }
 
     @Override

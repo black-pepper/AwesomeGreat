@@ -28,7 +28,8 @@ function Modify(prop){
   <div>
     <Card>
       <Card.Body>
-        <Form action={`/post/${post.id}`} method="post">
+        <Form action={`/post`} method="put">
+            <input type="hidden" name="_method" value="PUT"/>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>게시글 수정</Form.Label>
                 <Form.Control 
@@ -36,6 +37,7 @@ function Modify(prop){
                     as="textarea" 
                     rows={3} 
                 />
+                <Form.Control name="postId" value={id} type="hidden"/>
             </Form.Group>
             <Button id={post.id} variant="light" size="sm" href={`/detail/${post.id}`}>취소</Button>
             <Button id={post.id} variant="light" size="sm" type="submit">수정</Button>

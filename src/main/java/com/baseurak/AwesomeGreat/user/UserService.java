@@ -23,12 +23,6 @@ public class UserService  {
 
     public void deleteUser(String userId) { userRepository.deleteById(userId); }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException { // 시큐리티에서 지정한 서비스이기 때문에 이 메소드를 필수로 구현
-//        return userRepository.findByEmail(email)
-//                .orElseThrow(() -> new UsernameNotFoundException((email)));
-//    }
-
     public List<User> readAllUsers() {
         return userRepository.findAll();
     }

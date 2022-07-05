@@ -7,8 +7,8 @@ import java.util.List;
 @Repository
 public interface PostRepository {
     void create(Post post);
-    List<Post> read(Long postId1, Long postId2);
+    List<Post> read(Long postId, int cnt);
     Post read(Long postId);
-    void update(Post post);
+    void update(Long postId, String content);
     void delete(Long postId);
 }

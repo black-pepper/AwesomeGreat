@@ -19,7 +19,7 @@ function Main() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async() => {
-    const response = await fetch("/post");
+    const response = await fetch("/post?postId=0&cnt=10");
     const json = await response.json();
     setPosts(json);
     setLoading(false);

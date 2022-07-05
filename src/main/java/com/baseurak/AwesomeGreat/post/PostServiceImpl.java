@@ -1,15 +1,19 @@
 package com.baseurak.AwesomeGreat.post;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
@@ -22,16 +26,16 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void write(Post post) {
-        LocalDate now = LocalDate.now();
-        post.setUploadDate(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd ")));
+        LocalDateTime now = LocalDateTime.now();
+        post.setUploadDate(Timestamp.valueOf(now));
         post.setUserId(0L);
         post.setReport(0);
         postRepository.create(post);
     }
 
     @Override
-    public List<Post> read(Long postId1, Long postId2) {
-        return postRepository.read(postId1, postId2);
+    public List<Post> read(Long postId, int cnt) {
+        return postRepository.read(postId, cnt);
     }
 
     @Override
@@ -41,9 +45,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void modify(Long postId, String contents) {
-        Post post = postRepository.read(postId);
-        post.setContent(contents);
-        postRepository.update(post);
+        postRepository.update(postId, contents);
     }
 
     @Override

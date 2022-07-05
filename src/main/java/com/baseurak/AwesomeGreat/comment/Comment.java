@@ -1,4 +1,4 @@
-package com.baseurak.AwesomeGreat.Comment;
+package com.baseurak.AwesomeGreat.comment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

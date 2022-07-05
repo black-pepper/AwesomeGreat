@@ -1,4 +1,4 @@
-package com.baseurak.AwesomeGreat.Comment;
+package com.baseurak.AwesomeGreat.comment;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QComment extends EntityPathBase<Comment> {
 
-    private static final long serialVersionUID = -2010714795L;
+    private static final long serialVersionUID = -1013697163L;
 
     public static final QComment comment = new QComment("comment");
 
